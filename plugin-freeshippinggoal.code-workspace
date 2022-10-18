@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../sdks/plugin-interface"
+		},
+		{
+			"path": "../../../../plugin-io"
+		},
+		{
+			"path": "../../../../plugin-ceres"
+		}
+	],
+	"settings": {}
+}

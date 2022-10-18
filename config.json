@@ -1,0 +1,42 @@
+{
+    "formatVersion": 1,
+    "menu": {
+      "global": {
+        "label": "Config.Global",
+        "formFields": {
+          "global.active": {
+            "type": "checkBox",
+            "label": "Config.GlobalActive"
+          },
+          "global.grossValue": {
+            "type": "inputText",
+            "required": true,
+            "label": "Config.GlobalGoodsValueGross",
+            "options": {
+              "defaultValue": "50"
+            }
+          }
+        }
+      },
+      "individualization": {
+        "label": "Config.Individualization",
+        "formFields": {
+          "individualization.messageMissing": {
+            "type": "inputText",
+            "label": "Config.IndividualizationMessageMissing",
+            "options": {
+              "defaultValue": "",
+              "tooltip": "Config.IndividualizationMessageMissingTooltip"
+            }
+          },
+          "individualization.messageGoal": {
+            "type": "inputText",
+            "label": "Config.IndividualizationMessageGoal",
+            "options": {
+              "defaultValue": ""
+            }
+          }
+        }
+      }
+    }
+  }

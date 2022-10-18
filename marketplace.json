@@ -1,0 +1,35 @@
+{
+    "marketplaceName": {
+        "de": "Versandkostenfrei ab Warenwert erreichen",
+        "en": "No shipping costs for values over"
+    },
+    "license": "",
+    "price": 0,
+    "shortDescription": {
+        "de": "Zeige deinen Kund:innen anhand einer Fortschrittsanzeige, ob Sie berechtigt zum kostenfreien Versand sind",
+        "en": "Show your customers with a progress bar whether they are eligible for free shipping"
+    },
+    "categories": [
+        "4090"
+    ],
+    "keywords": [
+        "plugin",
+        "integration",
+        "template"
+    ],
+    "subscription": [
+        {
+            "interval": "monthly",
+            "price": 10.00
+        },
+        {
+            "interval": "quarterly",
+            "price": 24.00
+        },
+        {
+            "interval": "yearly",
+            "price": 60.00
+        }
+    ],
+    "offerTrial": true
+}

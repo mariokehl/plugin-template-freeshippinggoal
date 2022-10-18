@@ -1,0 +1,46 @@
+{
+    "name": "FreeShippingGoal",
+    "marketplaceName": {
+        "de": "Versandkostenfrei ab Warenwert erreichen",
+        "en": "No shipping costs for values over"
+    },
+    "categories": [
+        "4090"
+    ],
+    "namespace": "FreeShippingGoal",
+    "type": "template",
+    "version": "1.0.0",
+    "price": 0,
+    "description": "plentymarkets plugin to show progress bar to reach free shipping in frontend",
+    "shortDescription": {
+        "de": "Zeige deinen Kund:innen anhand einer Fortschrittsanzeige, ob Sie berechtigt zum kostenfreien Versand sind",
+        "en": "Show your customers with a progress bar whether they are eligible for free shipping"
+    },
+    "require": {
+        "Ceres": "~5.0.54"
+    },
+    "platform": {
+        "php": ">=7.3 <8.1"
+    },
+    "isClosedSource": true,
+    "serviceProvider": "FreeShippingGoal\\Providers\\FreeShippingGoalServiceProvider",
+    "dataProviders": [
+        {
+            "key": "FreeShippingGoal\\Containers\\FreeShippingGoalProgressBarContainer",
+            "name": "Display Progress Bar to reach Free Shipping",
+            "description": "",
+            "defaultLayoutContainer": "Ceres::BasketTotals.AfterShippingCosts"
+        }
+    ],
+    "license": "",
+    "pluginIcon": "icon_plugin_xs.png",
+    "author": "Bureau Mario Kehl",
+    "authorIcon": "icon_author_xs.png",
+    "email": "bureau@mariokehl.com",
+    "phone": "+49 15678 360279",
+    "keywords": [
+        "plugin",
+        "integration",
+        "template"
+    ]
+}
