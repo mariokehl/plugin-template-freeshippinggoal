@@ -1,6 +1,7 @@
 # Product Information
 
 With this plugin you show your customers by means of a progress bar from which shopping cart value they will receive free shipping. This means that you can exploit the potential of higher shopping cart values ​​in your plentyShop.
+
 ## Installation Guide
 
 To display the free goodie, you must enter the appropriate values ​​in the plugin configuration.
