@@ -70,11 +70,12 @@ class FreeShippingGoalProgressBarContainer
 
         /** @var Basket $basket */
         $basket = $basketRepo->load();
+        $actualItemSum = $basket->itemSum ? ($basket->itemSum + $basket->couponDiscount) : 0;
 
         if ($basket && $basket instanceof Basket) {
-            $currAmount = ($minimumGrossValue - $basket->itemSum);
+            $currAmount = ($minimumGrossValue - $actualItemSum);
             $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Plenty.Basket', ['basket' => $basket]);
-            $percentage = ($basket->itemSum / $minimumGrossValue) * 100;
+            $percentage = ($actualItemSum / $minimumGrossValue) * 100;
             $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Frontend.Percentage', ['percentage' => $percentage]);
             $percentage = floor($percentage);
             $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Frontend.Percentage', ['percentage' => $percentage]);
