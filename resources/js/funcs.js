@@ -20,7 +20,7 @@ function FreeShippingGoal(itemSum) {
     },
     this.getGoalReachedMessage = function () {
         const config = this.getConfig();
-        return config.icons.goal + '&nbsp;' + config.messages.goal;
+        return config.messages.goal;
     },
     this.getMissingMessage = function (amount) {
         const config = this.getConfig();
