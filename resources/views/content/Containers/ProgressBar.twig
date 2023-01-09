@@ -1,9 +1,9 @@
-<div class="mb-4">
+<div class="free-shipping-container" class="mb-4"{% if hidden %} style="display: none;"{% endif %}>
     <div class="progress mt-2 mb-1">
         <div role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-striped" {% if width | length > 0 %} style="{{ width }}"{% endif %}></div>
     </div>
     <div class="free-shipping-missing-amount small text-uppercase text-center">
-        {% if percentage == 100 %}<i class="fa fa-check"></i>&nbsp;{% endif %}{{ label | raw }}
+        {{ label | raw }}
     </div>
 </div>
 
@@ -16,11 +16,9 @@
         "grossValue": {{ grossValue }},
         "currency": "{{ currency }}",
         "messages": {
-            "goal": "{{ messages.goal | raw }}",
-            "missing": "{{ messages.missing | raw }}"
+            "goal": {{ trans("FreeShippingGoal::Template.MessageGoal") | json_encode | raw }},
+            "missing": {{ trans("FreeShippingGoal::Template.MessageMissing") | json_encode | raw }}
         },
-        "icons": {
-            "goal": "<i class=\"fa fa-check\"><\/i>"
-        }
+        "excludedShippingCountries": {{ excludedShippingCountries | json_encode | raw }}
     }
 </script>

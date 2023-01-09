@@ -15,24 +15,12 @@
             "options": {
               "defaultValue": "50"
             }
-          }
-        }
-      },
-      "individualization": {
-        "label": "Config.Individualization",
-        "formFields": {
-          "individualization.messageMissing": {
-            "type": "inputText",
-            "label": "Config.IndividualizationMessageMissing",
-            "options": {
-              "defaultValue": "",
-              "tooltip": "Config.IndividualizationMessageMissingTooltip"
-            }
           },
-          "individualization.messageGoal": {
+          "global.excludedShippingCountries": {
             "type": "inputText",
-            "label": "Config.IndividualizationMessageGoal",
+            "label": "Config.GlobalExcludedShippingCountries",
             "options": {
+              "tooltip": "Config.GlobalExcludedShippingCountriesTooltip",
               "defaultValue": ""
             }
           }

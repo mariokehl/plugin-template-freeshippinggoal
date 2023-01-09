@@ -1,6 +1,14 @@
 # Product Information
 
 With this plugin you show your customers by means of a progress bar from which shopping cart value they will receive free shipping. This means that you can exploit the potential of higher shopping cart values ​​in your plentyShop.
+
+## Features
+
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Easy setup<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Individual and localizable messages for missing amount and success<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Vouchers are taken into account in the calculation<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Hide display for delivery countries without free shipping
+
 ## Installation Guide
 
 To display the free goodie, you must enter the appropriate values ​​in the plugin configuration.
@@ -24,14 +32,28 @@ Then create the container links so that the progress bar is also displayed in th
 1. Change to the submenu **Container links**.
 2. Associate the **Display Progress Bar to reach Free Shipping** content with the **Ceres::BasketTotals.AfterShippingCosts** container to display in the shopping cart (_Shopping cart: After "Shipping"_)
 
-### Customization
+### Exclude delivery countries without free shipping
 
-| Setting                            | Description |
+If you do not offer free shipping in one or more delivery countries, you can exclude this via the plugin configuration and thus not display a progress bar.
+
+To do this, open the plugin configuration and enter a comma-separated list of prohibited delivery countries in the **General** area in the **Excluded shipping countries** field, e.g. _3,12_ for Belgium and the United Kingdom.
+
+    1=Germany
+    2=Austria
+    ...
+    
+A complete list of all delivery country IDs can be found under **Setup » Orders » Shipping » Settings** in the **Shipping Countries** tab.
+
+### Individualization
+
+In the **CMS » Multilingualism** menu, you can customize the texts below the progress bar. **Save** after customization and don't forget to press **Publish**.
+
+| Key                                | Description   |
 |------------------------------------|---------------|
-| Message value of goods not reached | Text if the shopping cart value is not reached, the following placeholders are available: `:amount` for the missing amount and `:currency` for the currency. |
-| Message Goods value reached        | Text when the shopping cart value is reached, i.e. as soon as the shipping is free |
+| MessageMissing | Text if the shopping cart value is not reached, the following placeholders are available: `:amount` for the missing amount and `:currency` for the currency. |
+| MessageGoal | Text when the shopping cart value is reached, i.e. as soon as the shipping is free |
 
-Tabelle 1: Configuration options customization
+Tabelle 1: Configuration options individualization
 
 
 <sub><sup>Every single purchase helps with constant further development and the implementation of user requests. Thanks very much!</sup></sub>
