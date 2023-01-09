@@ -98,14 +98,20 @@ class FreeShippingGoalProgressBarContainer
             $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.ProgressText', ['label' => $label]);
         }
 
+        // Excluded shipping countries
+        $excludedShippingCountriesAsString = $configRepo->get('FreeShippingGoal.global.excludedShippingCountries', '');
+        $excludedShippingCountries = array_map('intval', explode(',', $excludedShippingCountriesAsString));
+
         return $twig->render('FreeShippingGoal::content.Containers.ProgressBar', [
+            'excludedShippingCountries' => $excludedShippingCountries,
+            'hidden' => in_array($basket->shippingCountryId, $excludedShippingCountries),
             'grossValue' => $minimumGrossValue,
-            'itemSum'    => $basket->itemSum ?? 0,
-            'label'      => $label,
+            'itemSum' => $basket->itemSum ?? 0,
+            'label' => $label,
             'percentage' => $percentage,
-            'width'      => 'width: ' . number_format($percentage, 0, '', '') . '%',
-            'messages'   => $messages,
-            'currency'   => $currency
+            'width' => 'width: ' . number_format($percentage, 0, '', '') . '%',
+            'messages' => $messages,
+            'currency' => $currency
         ]);
     }
 

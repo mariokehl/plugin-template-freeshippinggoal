@@ -6,7 +6,8 @@ With this plugin you show your customers by means of a progress bar from which s
 
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Easy setup<br>
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Individual and localizable messages for missing amount and success<br>
-<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Vouchers are taken into account in the calculation
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Vouchers are taken into account in the calculation<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Hide display for delivery countries without free shipping
 
 ## Installation Guide
 
@@ -30,6 +31,18 @@ Then create the container links so that the progress bar is also displayed in th
 
 1. Change to the submenu **Container links**.
 2. Associate the **Display Progress Bar to reach Free Shipping** content with the **Ceres::BasketTotals.AfterShippingCosts** container to display in the shopping cart (_Shopping cart: After "Shipping"_)
+
+### Exclude delivery countries without free shipping
+
+If you do not offer free shipping in one or more delivery countries, you can exclude this via the plugin configuration and thus not display a progress bar.
+
+To do this, open the plugin configuration and enter a comma-separated list of prohibited delivery countries in the **General** area in the **Excluded shipping countries** field, e.g. _3,12_ for Belgium and the United Kingdom.
+
+    1=Germany
+    2=Austria
+    ...
+    
+A complete list of all delivery country IDs can be found under **Setup » Orders » Shipping » Settings** in the **Shipping Countries** tab.
 
 ### Individualization
 

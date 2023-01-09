@@ -15,6 +15,14 @@
             "options": {
               "defaultValue": "50"
             }
+          },
+          "global.excludedShippingCountries": {
+            "type": "inputText",
+            "label": "Config.GlobalExcludedShippingCountries",
+            "options": {
+              "tooltip": "Config.GlobalExcludedShippingCountriesTooltip",
+              "defaultValue": ""
+            }
           }
         }
       }

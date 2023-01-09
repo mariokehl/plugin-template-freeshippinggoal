@@ -6,7 +6,8 @@ Mit diesem Plugin zeigst du deinen Kund:innen mittels einer Fortschrittsanzeige,
 
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Einfache Einrichtung<br>
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i>Individuelle und lokalisierbare Texte für Fehlbetrag und Erfolg<br>
-<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Gutscheine werden in der Berechnung berücksichtigt
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Gutscheine werden in der Berechnung berücksichtigt<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Anzeige für Lieferländer ohne kostenlosen Versand ausblenden
 
 ## Installationsanleitung
 
@@ -30,6 +31,18 @@ Danach die Container-Verknüpfungen anlegen, so dass die Fortschrittsanzeige auc
 
 1. Wechsel zum Untermenü **Container-Verknüpfungen**.
 1. Verknüpfe den Inhalt **Display Progress Bar to reach Free Shipping** mit dem Container **Ceres::BasketTotals.AfterShippingCosts** zur Anzeige im Warenkorb (_Shopping cart: After "Shipping"_)
+
+### Lieferländer ohne Gratis-Versand ausschließen
+
+Bietest du in einem oder mehreren Lieferländern keinen Gratis-Versand an, kannst du diese über die Plugin-Konfiguraton ausschließen und somit keine Fortschrittsanzeige darstellen.
+
+Öffne dazu die Plugin-Konfiguration und trage im Bereich **Allgemein** im Feld **Ausgenommene Lieferländer** eine kommaseparierte Liste von verbotenen Lieferländern ein, z.B. _3,12_ für Belgien und United Kingdom.
+
+    1=Deutschland
+    2=Österreich
+    ...
+    
+Eine vollständige Liste aller Lieferland-IDs findest du unter **Einrichtung » Aufträge » Versand » Optionen** im Tab **Lieferländer**.
 
 ### Individualisierung
 
