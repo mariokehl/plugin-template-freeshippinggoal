@@ -74,28 +74,28 @@ class FreeShippingGoalProgressBarContainer
 
         if ($basket && $basket instanceof Basket) {
             $currAmount = ($minimumGrossValue - $actualItemSum);
-            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Plenty.Basket', ['basket' => $basket]);
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Basket', ['basket' => $basket]);
             $percentage = ($actualItemSum / $minimumGrossValue) * 100;
-            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Frontend.Percentage', ['percentage' => $percentage]);
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Percentage', ['percentage' => $percentage]);
             $percentage = floor($percentage);
-            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Frontend.Percentage', ['percentage' => $percentage]);
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Percentage', ['percentage' => $percentage]);
             $percentage = ($percentage > 100) ? 100 : $percentage;
-            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Frontend.Percentage', ['percentage' => $percentage]);
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Percentage', ['percentage' => $percentage]);
         }
 
         // The currency
         $currency = $basket->currency ?? 'EUR';
 
         // The messages
-        $messages = $this->getMessageTemplates($configRepo);
-        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Plenty.MessageTemplates', ['messages' => $messages]);
+        $messages = $this->getMessageTemplates();
+        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.MsgTemplates', ['messages' => $messages]);
         $label = '';
         if ($percentage < 100) {
-            $label = $this->getMessageTemplates($configRepo, number_format($currAmount, 2, ',', ''), $currency)[self::MESSAGE_TEMPLATE_MISSING];
-            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Frontend.ProgressText', ['label' => $label, 'percentageLower' => true]);
+            $label = $this->getMessageTemplates(number_format($currAmount, 2, ',', ''), $currency)[self::MESSAGE_TEMPLATE_MISSING];
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.ProgressText', ['label' => $label, 'percentageLower' => true]);
         } else {
             $label = $messages[self::MESSAGE_TEMPLATE_GOAL];
-            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Frontend.ProgressText', ['label' => $label]);
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.ProgressText', ['label' => $label]);
         }
 
         return $twig->render('FreeShippingGoal::content.Containers.ProgressBar', [
@@ -110,41 +110,23 @@ class FreeShippingGoalProgressBarContainer
     }
 
     /**
-     * @param ConfigRepository $configRepo
      * @param string $amount
      * @param string $currency
      * @return array
      */
-    private function getMessageTemplates(ConfigRepository $configRepo, string $amount = '', string $currency = ''): array
+    private function getMessageTemplates(string $amount = '', string $currency = ''): array
     {
-        // Set the custom templates
-        $this->messageTemplates[self::MESSAGE_TEMPLATE_MISSING] = $configRepo->get('FreeShippingGoal.individualization.messageMissing', '');
-        $this->messageTemplates[self::MESSAGE_TEMPLATE_GOAL] = $configRepo->get('FreeShippingGoal.individualization.messageGoal', '');
+        /** @var Translator $translator */
+        $translator = pluginApp(Translator::class);
 
-        // Default templates as fallback
-        $hasNoIndividualMessageMissing = !strlen($this->messageTemplates[self::MESSAGE_TEMPLATE_MISSING]);
-        $hasNoIndividualMessageGoal = !strlen($this->messageTemplates[self::MESSAGE_TEMPLATE_GOAL]);
-
-        if ($hasNoIndividualMessageMissing || $hasNoIndividualMessageGoal) {
-            /** @var Translator $translator */
-            $translator = pluginApp(Translator::class);
-            if ($hasNoIndividualMessageMissing) {
-                $this->messageTemplates[self::MESSAGE_TEMPLATE_MISSING] = $translator->trans('FreeShippingGoal::Frontend.MessageMissing');
-            }
-            if ($hasNoIndividualMessageGoal) {
-                $this->messageTemplates[self::MESSAGE_TEMPLATE_GOAL] = $translator->trans('FreeShippingGoal::Frontend.MessageGoal');
-            }
-        }
+        // Initialize the custom templates
+        $this->messageTemplates[self::MESSAGE_TEMPLATE_MISSING] = $translator->trans('FreeShippingGoal::Template.MessageMissing');
+        $this->messageTemplates[self::MESSAGE_TEMPLATE_GOAL] = $translator->trans('FreeShippingGoal::Template.MessageGoal');
 
         // Replace markers
         if (strlen($amount) && strlen($currency)) {
             $this->messageTemplates[self::MESSAGE_TEMPLATE_MISSING] = str_replace([':amount', ':currency'], [$amount, $currency], $this->messageTemplates[self::MESSAGE_TEMPLATE_MISSING]);
         }
-
-        // Replace german umlauts
-        array_walk_recursive($this->messageTemplates, function (&$value) {
-            $value = htmlentities($value);
-        });
 
         return $this->messageTemplates;
     }

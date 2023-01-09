@@ -16,8 +16,8 @@
         "grossValue": {{ grossValue }},
         "currency": "{{ currency }}",
         "messages": {
-            "goal": "{{ messages.goal | raw }}",
-            "missing": "{{ messages.missing | raw }}"
+            "goal": {{ trans("FreeShippingGoal::Template.MessageGoal") | json_encode | raw }},
+            "missing": {{ trans("FreeShippingGoal::Template.MessageMissing") | json_encode | raw }}
         },
         "icons": {
             "goal": "<i class=\"fa fa-check\"><\/i>"

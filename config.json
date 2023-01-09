@@ -17,26 +17,6 @@
             }
           }
         }
-      },
-      "individualization": {
-        "label": "Config.Individualization",
-        "formFields": {
-          "individualization.messageMissing": {
-            "type": "inputText",
-            "label": "Config.IndividualizationMessageMissing",
-            "options": {
-              "defaultValue": "",
-              "tooltip": "Config.IndividualizationMessageMissingTooltip"
-            }
-          },
-          "individualization.messageGoal": {
-            "type": "inputText",
-            "label": "Config.IndividualizationMessageGoal",
-            "options": {
-              "defaultValue": ""
-            }
-          }
-        }
       }
     }
   }

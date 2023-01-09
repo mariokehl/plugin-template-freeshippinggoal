@@ -22,21 +22,21 @@ class SubscriptionInfoHelper
     {
         /** @var SubscriptionInformationServiceContract $subscriptionInfoService */
         $subscriptionInfoService = pluginApp(SubscriptionInformationServiceContract::class);
-        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Plenty.Subscription', [
+        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Subscription', [
             'subscriptionInfo' => $subscriptionInfoService->getSubscriptionInfo('FreeShippingGoal')
         ]);
 
         // Exception for my development system
         $pid = $this->plentyID();
         if ($pid === 58289) {
-            $this->getLogger(__METHOD__)->info('FreeShippingGoal::Plenty.SubscriptionDev');
+            $this->getLogger(__METHOD__)->info('FreeShippingGoal::Debug.SubscriptionDev');
             return true;
         }
 
         // Check if user has paid and show warning in log if he hasn't
         $isPaid = $subscriptionInfoService->isPaid('FreeShippingGoal');
         if (!$isPaid) {
-            $this->getLogger(__METHOD__)->warning('FreeShippingGoal::Plenty.Subscription', ['isPaid' => false]);
+            $this->getLogger(__METHOD__)->warning('FreeShippingGoal::Debug.Subscription', ['isPaid' => false]);
         }
 
         return $isPaid;

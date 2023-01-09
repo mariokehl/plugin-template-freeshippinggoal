@@ -2,6 +2,12 @@
 
 Mit diesem Plugin zeigst du deinen Kund:innen mittels einer Fortschrittsanzeige, ab welchem Warenkorbwert sie den Versand gratis erhalten. Dies führt dazu, dass du in deinem plentyShop das Potenzial höherer Warenkorbwerte ausschöpfen kannst.
 
+## Features
+
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Einfache Einrichtung<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i>Individuelle und lokalisierbare Texte für Fehlbetrag und Erfolg<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Gutscheine werden in der Berechnung berücksichtigt
+
 ## Installationsanleitung
 
 Für die Anzeige der Fortschrittsanzeige musst du die entsprechenden Werte in der Plugin-Konfiguration hinterlegen.
@@ -27,10 +33,12 @@ Danach die Container-Verknüpfungen anlegen, so dass die Fortschrittsanzeige auc
 
 ### Individualisierung
 
-| Einstellung                        | Beschreibung |
+Im Menü **CMS » Mehrsprachigkeit** kannst du die Texte unterhalb der Fortschrittsanzeige anpassen. **Speichere** nach der Anpassung und vergiss nicht auf **Veröffentlichen** zu drücken.
+
+| Schlüssel                          | Beschreibung  |
 |------------------------------------|---------------|
-| Nachricht Nichterreichen Warenwert | Text bei Nichterreichen des Warenkorbwert, folgende Platzhalter stehen zur Verfügung: `:amount` für den fehlenden Betrag und `:currency` für die Währung. |
-| Nachricht Warenwert erreicht       | Text bei Erreichen des Warenkorbwert, d.h. sobald die Versandkosten entfallen |
+| MessageMissing | Text bei Nichterreichen des Warenkorbwert, folgende Platzhalter stehen zur Verfügung: `:amount` für den fehlenden Betrag und `:currency` für die Währung. |
+| MessageGoal | Text bei Erreichen des Warenkorbwert, d.h. sobald die Versandkosten entfallen |
 
 Tabelle 1: Konfigurationsoptionen Individualisierung
 
