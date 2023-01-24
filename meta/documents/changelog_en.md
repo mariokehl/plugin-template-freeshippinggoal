@@ -1,5 +1,10 @@
 # Release Notes for "No shipping costs for values over"
 
+## v1.0.2 (2023-01-24)
+
+### Fixed
+- A duplicate class attribute in HTML markup combined with Server-Side Rendering (SSR) caused the deployment process to fail
+
 ## v1.0.1 (2023-01-09)
 
 ### Added

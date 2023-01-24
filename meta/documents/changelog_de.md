@@ -1,5 +1,10 @@
 # Versionshinweise für "Versandkostenfrei ab Warenwert erreichen"
 
+## v1.0.2 (24.01.2023)
+
+### Behoben
+- Ein doppeltes Klassenattribut im HTML Markup führte in Verbindung mit Server-Side Rendering (SSR) zu einem Fehler beim Bereitstellungsprozess
+
 ## v1.0.1 (09.01.2023)
 
 ### Hinzugefügt
