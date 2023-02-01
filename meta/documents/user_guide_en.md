@@ -53,7 +53,17 @@ In the **CMS » Multilingualism** menu, you can customize the texts below the pr
 | MessageMissing | Text if the shopping cart value is not reached, the following placeholders are available: `:amount` for the missing amount and `:currency` for the currency. |
 | MessageGoal | Text when the shopping cart value is reached, i.e. as soon as the shipping is free |
 
-Tabelle 1: Configuration options individualization
+Table 1: Configuration options individualization
+
+The appearance of the progress bar can be customized in the **Individualization** area in the **Plugin configuration**.
+
+| Einstellung                        | Beschreibung  |
+|------------------------------------|---------------|
+| CSS class for missing | This bootstrap class will get your progress bar as background color as long as the free shipping limit has not been reached.<br>Choose Custom to override this with your theme. |
+| CSS class for goal | This bootstrap class gets your progress bar as background color as soon as the order is free shipping.<br>Choose Custom to override this with your theme. |
+| Progress bar striped | Adds the .progress-bar-striped bootstrap class to the progress bar. |
+
+Table 2: Plugin configuration customization
 
 
 <sub><sup>Every single purchase helps with constant further development and the implementation of user requests. Thanks very much!</sup></sub>

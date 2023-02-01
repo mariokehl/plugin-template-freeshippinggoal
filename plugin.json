@@ -9,8 +9,8 @@
     ],
     "namespace": "FreeShippingGoal",
     "type": "template",
-    "version": "1.0.2",
-    "price": 159.10,
+    "version": "1.0.3",
+    "price": 115.43,
     "description": "plentymarkets plugin to show progress bar to reach free shipping in frontend",
     "shortDescription": {
         "de": "Zeige deinen Kund:innen anhand einer Fortschrittsanzeige, ob Sie berechtigt zum kostenfreien Versand sind",

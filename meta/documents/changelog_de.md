@@ -1,5 +1,10 @@
 # Versionshinweise für "Versandkostenfrei ab Warenwert erreichen"
 
+## v1.0.3 (01.02.2023)
+
+### Hinzugefügt
+- Das Aussehen der Fortschrittsanzeige erlaubt ab sofort Individualisierungen: CSS-Klasse(n) für Fehlbetrag und Erfolg (legt die Hintergrundfarbe der Fortschrittsanzeige fest) und ggf. gestreifte Fortschrittsanzeige
+
 ## v1.0.2 (24.01.2023)
 
 ### Behoben
