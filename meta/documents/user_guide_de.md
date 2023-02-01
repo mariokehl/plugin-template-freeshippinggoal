@@ -55,5 +55,15 @@ Im Menü **CMS » Mehrsprachigkeit** kannst du die Texte unterhalb der Fortschri
 
 Tabelle 1: Konfigurationsoptionen Individualisierung
 
+Das Aussehen der Fortschrittsanzeige lässt sich im Bereich **Individualisierung** in der **Plugin-Konfiguration** anpassen.
+
+| Setting                            | Description  |
+|------------------------------------|---------------|
+| CSS-Klasse für Fehlbetrag | Diese Bootstrap-Klasse erhält deine Fortschrittsanzeige als Hintergrundfarbe, solange die Grenze für Versandkostenfrei noch nicht erreicht wurde.<br>Wähle Eigene um dies mit deinem Theme zu überschreiben. |
+| CSS-Klasse für Erfolg | Diese Bootstrap-Klasse erhält deine Fortschrittsanzeige als Hintergrundfarbe, sobald die Bestellung Versandkostenfrei ist.<br>Wähle Eigene um dies mit deinem Theme zu überschreiben. |
+| Fortschrittsanzeige gestreift | Fügt der Fortschrittsanzeige die Bootstrap-Klasse .progress-bar-striped hinzu. |
+
+Tabelle 2: Plugin-Konfiguration Individualisierung
+
 
 <sub><sup>Jeder einzelne Kauf hilft bei der ständigen Weiterentwicklung und der Umsetzung von Userwünschen. Vielen Dank!</sup></sub>

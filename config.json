@@ -1,30 +1,89 @@
 {
-    "formatVersion": 1,
-    "menu": {
-      "global": {
-        "label": "Config.Global",
-        "formFields": {
-          "global.active": {
-            "type": "checkBox",
-            "label": "Config.GlobalActive"
-          },
-          "global.grossValue": {
-            "type": "inputText",
-            "required": true,
-            "label": "Config.GlobalGoodsValueGross",
-            "options": {
-              "defaultValue": "50"
-            }
-          },
-          "global.excludedShippingCountries": {
-            "type": "inputText",
-            "label": "Config.GlobalExcludedShippingCountries",
-            "options": {
-              "tooltip": "Config.GlobalExcludedShippingCountriesTooltip",
-              "defaultValue": ""
-            }
+  "formatVersion": 1,
+  "menu": {
+    "global": {
+      "label": "Config.Global",
+      "formFields": {
+        "global.active": {
+          "type": "checkBox",
+          "label": "Config.GlobalActive"
+        },
+        "global.grossValue": {
+          "type": "inputText",
+          "required": true,
+          "label": "Config.GlobalGoodsValueGross",
+          "options": {
+            "defaultValue": "50"
           }
+        },
+        "global.excludedShippingCountries": {
+          "type": "inputText",
+          "label": "Config.GlobalExcludedShippingCountries",
+          "options": {
+            "tooltip": "Config.GlobalExcludedShippingCountriesTooltip",
+            "defaultValue": ""
+          }
+        }
+      }
+    },
+    "individualization": {
+      "label": "Config.Individualization",
+      "formFields": {
+        "individualization.classMissingAmount": {
+          "type": "selectBox",
+          "label": "Config.IndividualizationClassMissing",
+          "options": {
+            "defaultValue": "bg-warning",
+            "selectBoxValues": [
+              {
+                "value": "bg-success",
+                "caption": "Config.IndividualizationClassSuccess"
+              },
+              {
+                "value": "bg-warning",
+                "caption": "Config.IndividualizationClassWarning"
+              },
+              {
+                "value": "bg-info",
+                "caption": "Config.IndividualizationClassInfo"
+              },
+              {
+                "value": "bg-custom",
+                "caption": "Config.IndividualizationClassCustom"
+              }
+            ]
+          }
+        },
+        "individualization.classReachedAmount": {
+          "type": "selectBox",
+          "label": "Config.IndividualizationClassGoal",
+          "options": {
+            "defaultValue": "bg-success",
+            "selectBoxValues": [
+              {
+                "value": "bg-success",
+                "caption": "Config.IndividualizationClassSuccess"
+              },
+              {
+                "value": "bg-warning",
+                "caption": "Config.IndividualizationClassWarning"
+              },
+              {
+                "value": "bg-info",
+                "caption": "Config.IndividualizationClassInfo"
+              },
+              {
+                "value": "bg-custom",
+                "caption": "Config.IndividualizationClassCustom"
+              }
+            ]
+          }
+        },
+        "individualization.progressBarStriped": {
+          "type": "checkBox",
+          "label": "Config.IndividualizationProgressBarStriped"
         }
       }
     }
   }
+}

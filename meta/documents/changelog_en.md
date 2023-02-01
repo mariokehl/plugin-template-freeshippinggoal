@@ -1,5 +1,10 @@
 # Release Notes for "No shipping costs for values over"
 
+## v1.0.3 (2023-02-01)
+
+### Added
+- The appearance of the progress bar can now be customized: CSS class(es) for missing and success (determines the background color of the progress bar) and, if necessary, striped progress bar
+
 ## v1.0.2 (2023-01-24)
 
 ### Fixed

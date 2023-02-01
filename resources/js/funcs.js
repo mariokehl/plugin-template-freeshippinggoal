@@ -29,6 +29,12 @@ function FreeShippingGoal(itemSum) {
         msg = msg.replace(':currency', config.currency);
         return msg;
     },
+    this.getPercentage = function () {
+        let pr = (this.getItemSum() / this.getGrossValue()) * 100;
+        pr = Math.floor(pr);
+        pr = (pr > 100) ? 100 : pr;
+        return pr;
+    },
     this.calc = function () {
         let output;
 
@@ -38,25 +44,42 @@ function FreeShippingGoal(itemSum) {
         } else {
             output = this.getMissingMessage(amount);
         }
+        const pr = this.getPercentage();
+        const pb = document.querySelectorAll('[role="progressbar"]')[0];
+        pb.setAttribute('aria-valuenow', pr);
+        pb.style['width'] = pr + '%';
 
-        let pr = (this.getItemSum() / this.getGrossValue()) * 100;
-        pr = Math.floor(pr);
-        pr = (pr > 100) ? 100 : pr;
-
-        const progress = document.querySelectorAll('[role="progressbar"]')[0];
-        progress.setAttribute('aria-valuenow', pr);
-        progress.style['width'] = pr + '%';
+        // Toggle classes
+        const config = this.getConfig();
+        if (amount <= 0) {
+            pb.classList.remove(config.classes.missingAmount);
+            pb.classList.add(config.classes.reachedAmount);
+        } else {
+            pb.classList.remove(config.classes.reachedAmount);
+            pb.classList.add(config.classes.missingAmount);
+        }
 
         return output;
+    },
+    this.init = function () {
+        let config = this.getConfig();
+        if (this.itemSum) {
+            config.initialData.amount = this.itemSum;
+            config.initialData.percentage = this.getPercentage();
+            document.getElementById('free-shipping-config').textContent = JSON.stringify(config);
+        }
     },
     this.setLabel = function () {
         const els = document.getElementsByClassName('free-shipping-missing-amount');
         if (!els.length) {
+            this.init();
             return;
         } else {
             const self = this;
             Array.prototype.forEach.call(els, function (el) {
+                el.style.display = 'none';
                 el.innerHTML = self.calc();
+                el.style.display = 'block';
             });
         }
     },
