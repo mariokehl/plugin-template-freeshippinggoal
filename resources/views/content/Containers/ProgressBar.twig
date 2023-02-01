@@ -1,8 +1,11 @@
+{% set classMissingAmount = config("FreeShippingGoal.individualization.classMissingAmount") %}
+{% set classReachedAmount = config("FreeShippingGoal.individualization.classReachedAmount") %}
+
 <div class="free-shipping-container mb-4"{% if hidden %} style="display: none;"{% endif %}>
     <div class="progress mt-2 mb-1">
-        <div role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-striped" {% if width | length > 0 %} style="{{ width }}"{% endif %}></div>
+        <div role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" class="progress-bar{% if config("FreeShippingGoal.individualization.progressBarStriped") == "true" %} progress-bar-striped{% endif %} {% if percentage == 100 %}{{ classReachedAmount }}{% else %}{{ classMissingAmount }}{% endif %}" {% if width | length > 0 %} style="{{ width }}"{% endif %}></div>
     </div>
-    <div class="free-shipping-missing-amount small text-uppercase text-center">
+    <div class="free-shipping-missing-amount text-center">
         {{ label | raw }}
     </div>
 </div>
@@ -18,6 +21,10 @@
         "messages": {
             "goal": {{ trans("FreeShippingGoal::Template.MessageGoal") | json_encode | raw }},
             "missing": {{ trans("FreeShippingGoal::Template.MessageMissing") | json_encode | raw }}
+        },
+        "classes": {
+            "missingAmount": "{{ classMissingAmount }}",
+            "reachedAmount": "{{ classReachedAmount }}"
         },
         "excludedShippingCountries": {{ excludedShippingCountries | json_encode | raw }}
     }
