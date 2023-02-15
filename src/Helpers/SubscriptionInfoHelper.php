@@ -3,6 +3,7 @@
 namespace FreeShippingGoal\Helpers;
 
 use Plenty\Modules\PlentyMarketplace\Contracts\SubscriptionInformationServiceContract;
+use Plenty\Modules\PlentyMarketplace\Models\SubscriptionOrderInformation;
 use Plenty\Plugin\Application;
 use Plenty\Plugin\Log\Loggable;
 
@@ -22,9 +23,10 @@ class SubscriptionInfoHelper
     {
         /** @var SubscriptionInformationServiceContract $subscriptionInfoService */
         $subscriptionInfoService = pluginApp(SubscriptionInformationServiceContract::class);
-        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Subscription', [
-            'subscriptionInfo' => $subscriptionInfoService->getSubscriptionInfo('FreeShippingGoal')
-        ]);
+
+        /** @var SubscriptionOrderInformation $subscriptionInfo */
+        $subscriptionInfo = $subscriptionInfoService->getSubscriptionInfo('FreeShippingGoal');
+        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Subscription', ['subscriptionInfo' => $subscriptionInfo]);
 
         // Exception for my development system
         $pid = $this->plentyID();

@@ -1,5 +1,9 @@
 # Release Notes for "No shipping costs for values over"
 
+## v1.0.4 (2023-02-15)
+
+TODO
+
 ## v1.0.3 (2023-02-01)
 
 ### Added

@@ -1,5 +1,9 @@
 # Versionshinweise für "Versandkostenfrei ab Warenwert erreichen"
 
+## v1.0.4 (15.02.2023)
+
+TODO
+
 ## v1.0.3 (01.02.2023)
 
 ### Hinzugefügt
