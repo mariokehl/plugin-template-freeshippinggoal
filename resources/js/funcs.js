@@ -5,6 +5,7 @@
  */
 function FreeShippingGoal(itemSum) {
     this.itemSum = itemSum;
+    this.message = '';
     this.getConfig = function () {
         const json = JSON.parse(document.getElementById('free-shipping-config').textContent);
         return json;
@@ -35,31 +36,50 @@ function FreeShippingGoal(itemSum) {
         pr = (pr > 100) ? 100 : pr;
         return pr;
     },
-    this.calc = function () {
-        let output;
-
-        const amount = (this.getGrossValue() - this.getItemSum());
-        if (amount <= 0) {
-            output = this.getGoalReachedMessage();
-        } else {
-            output = this.getMissingMessage(amount);
-        }
-        const pr = this.getPercentage();
-        const pb = document.querySelectorAll('[role="progressbar"]')[0];
-        pb.setAttribute('aria-valuenow', pr);
-        pb.style['width'] = pr + '%';
-
-        // Toggle classes
+    this.syncGrossValue = function () {
         const config = this.getConfig();
-        if (amount <= 0) {
-            pb.classList.remove(config.classes.missingAmount);
-            pb.classList.add(config.classes.reachedAmount);
-        } else {
-            pb.classList.remove(config.classes.reachedAmount);
-            pb.classList.add(config.classes.missingAmount);
-        }
+        return $.getJSON('/plugin/free-shipping-goal/current/', function (data) {
+            config.grossValue = data.minimumGrossValue;
+            document.getElementById('free-shipping-config').textContent = JSON.stringify(config);
+        });
+    },
+    this.calc = function (label) {
+        let self = this;
+        this.syncGrossValue().then(function () {
 
-        return output;
+            const container = document.querySelectorAll('.free-shipping-container')[0];
+            if (!self.getGrossValue()) {
+                container.style.display = 'none';
+            } else {
+                container.style.display = 'block';
+            }
+
+            let output = '';
+            label.style.display = 'none';
+
+            const amount = (self.getGrossValue() - self.getItemSum());
+            if (amount <= 0) {
+                output = self.getGoalReachedMessage();
+            } else {
+                output = self.getMissingMessage(amount);
+            }
+            const pr = self.getPercentage();
+            const pb = document.querySelectorAll('[role="progressbar"]')[0];
+            pb.setAttribute('aria-valuenow', pr);
+            pb.style['width'] = pr + '%';
+    
+            // Toggle classes
+            const config = self.getConfig();
+            if (amount <= 0) {
+                pb.classList.remove(config.classes.missingAmount);
+                pb.classList.add(config.classes.reachedAmount);
+            } else {
+                pb.classList.remove(config.classes.reachedAmount);
+                pb.classList.add(config.classes.missingAmount);
+            }
+            label.innerHTML = output;
+            label.style.display = 'block';
+        });
     },
     this.init = function () {
         let config = this.getConfig();
@@ -77,9 +97,7 @@ function FreeShippingGoal(itemSum) {
         } else {
             const self = this;
             Array.prototype.forEach.call(els, function (el) {
-                el.style.display = 'none';
-                el.innerHTML = self.calc();
-                el.style.display = 'block';
+                self.calc(el);
             });
         }
     },

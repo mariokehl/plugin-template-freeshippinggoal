@@ -2,6 +2,7 @@
 
 namespace FreeShippingGoal\Containers;
 
+use FreeShippingGoal\Helpers\ShippingProfileHelper;
 use FreeShippingGoal\Helpers\SubscriptionInfoHelper;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Modules\Basket\Models\Basket;
@@ -56,9 +57,6 @@ class FreeShippingGoalProgressBarContainer
             return '';
         }
 
-        // The amount to reach
-        $minimumGrossValue = $configRepo->get('FreeShippingGoal.global.grossValue', 50);
-
         // Current goal amount
         $currAmount = 0;
 
@@ -72,7 +70,11 @@ class FreeShippingGoalProgressBarContainer
         $basket = $basketRepo->load();
         $actualItemSum = $basket->itemSum ? ($basket->itemSum + $basket->couponDiscount) : 0;
 
-        if ($basket && $basket instanceof Basket) {
+        /** @var ShippingProfileHelper $shippingProfileHelper */
+        $shippingProfileHelper = pluginApp(ShippingProfileHelper::class);
+        $minimumGrossValue = $shippingProfileHelper->getFreeShippingValue($basket->shippingCountryId, $basket->shippingProfileId);
+
+        if (($basket && $basket instanceof Basket) && $minimumGrossValue) {
             $currAmount = ($minimumGrossValue - $actualItemSum);
             $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Basket', ['basket' => $basket]);
             $percentage = ($actualItemSum / $minimumGrossValue) * 100;
@@ -104,7 +106,7 @@ class FreeShippingGoalProgressBarContainer
 
         return $twig->render('FreeShippingGoal::content.Containers.ProgressBar', [
             'excludedShippingCountries' => $excludedShippingCountries,
-            'hidden' => in_array($basket->shippingCountryId, $excludedShippingCountries),
+            'hidden' => in_array($basket->shippingCountryId, $excludedShippingCountries) || !$minimumGrossValue,
             'grossValue' => $minimumGrossValue,
             'itemSum' => $basket->itemSum ?? 0,
             'label' => $label,
