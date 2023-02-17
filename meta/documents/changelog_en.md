@@ -1,8 +1,9 @@
 # Release Notes for "No shipping costs for values over"
 
-## v1.0.4 (2023-02-15)
+## v1.0.4 (2023-02-17)
 
-TODO
+### Added
+- New setting **Get free shipping limit from postage table** in the plugin configuration. Activate this if you use several shipping profiles with different flat rates for free shipping from the value of the goods
 
 ## v1.0.3 (2023-02-01)
 

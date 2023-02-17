@@ -1,8 +1,9 @@
 # Versionshinweise für "Versandkostenfrei ab Warenwert erreichen"
 
-## v1.0.4 (15.02.2023)
+## v1.0.4 (17.02.2023)
 
-TODO
+### Hinzugefügt
+- Neue Einstellung **Versandkostenfreigrenze aus Portotabelle holen** in der Plugin-Konfiguration. Aktiviere dies, wenn du mehrere Versandprofile mit unterschiedlichen Pauschalen für Versandkostenfrei ab Warenwert einsetzt
 
 ## v1.0.3 (01.02.2023)
 

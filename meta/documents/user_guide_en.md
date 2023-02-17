@@ -4,10 +4,11 @@ With this plugin you show your customers by means of a progress bar from which s
 
 ## Features
 
-<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Easy setup<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Easy setup to display Free Shipping<br>
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Individual and localizable messages for missing amount and success<br>
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Vouchers are taken into account in the calculation<br>
-<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Hide display for delivery countries without free shipping
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Hide display for delivery countries without free shipping<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Get shipping costs automatically from the postage table of the selected shipping profile
 
 ## Installation Guide
 
