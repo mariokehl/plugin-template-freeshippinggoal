@@ -23,6 +23,13 @@
             "tooltip": "Config.GlobalExcludedShippingCountriesTooltip",
             "defaultValue": ""
           }
+        },
+        "global.syncGrossValue": {
+          "type": "checkBox",
+          "label": "Config.GlobalSyncGrossValue",
+          "options": {
+            "defaultValue": "false"
+          }
         }
       }
     },

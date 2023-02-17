@@ -4,10 +4,11 @@ Mit diesem Plugin zeigst du deinen Kund:innen mittels einer Fortschrittsanzeige,
 
 ## Features
 
-<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Einfache Einrichtung<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Einfache Einrichtung zur Anzeige von Versandkostenfrei<br>
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Individuelle und lokalisierbare Texte für Fehlbetrag und Erfolg<br>
 <i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Gutscheine werden in der Berechnung berücksichtigt<br>
-<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Anzeige für Lieferländer ohne kostenlosen Versand ausblenden
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Anzeige für Lieferländer ohne kostenlosen Versand ausblenden<br>
+<i aria-hidden="true" class="fa fa-fw fa-check-square text-success"></i> Versandkosten automatisch aus der Portotabelle des gewählten Versandprofils holen
 
 ## Installationsanleitung
 

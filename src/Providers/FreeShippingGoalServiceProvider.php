@@ -25,6 +25,7 @@ class FreeShippingGoalServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->getApplication()->register(FreeShippingGoalRouteServiceProvider::class);
     }
 
     /**

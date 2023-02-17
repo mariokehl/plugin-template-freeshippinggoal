@@ -1,0 +1,67 @@
+<?php
+
+namespace FreeShippingGoal\Helpers;
+
+use Plenty\Modules\Order\Shipping\Contracts\ParcelServicePresetRepositoryContract;
+use Plenty\Modules\Order\Shipping\Countries\Contracts\CountryRepositoryContract;
+use Plenty\Modules\Order\Shipping\ParcelService\Models\ParcelServicePreset;
+use Plenty\Plugin\ConfigRepository;
+use Plenty\Plugin\Log\Loggable;
+
+/**
+ * Class ShippingProfileHelper
+ * 
+ * @package FreeShippingGoal\Helpers
+ */
+class ShippingProfileHelper
+{
+    use Loggable;
+
+    /**
+     * @param integer $shippingCountryId
+     * @param integer $shippingProfileId
+     * @return float
+     */
+    public function getFreeShippingValue(int $shippingCountryId, int $shippingProfileId): float
+    {
+        /** @var ConfigRepository $configRepo */
+        $configRepo = pluginApp(ConfigRepository::class);
+
+        // Sync value with selected shipping profile
+        $shouldSync = $configRepo->get('FreeShippingGoal.global.syncGrossValue', 'false');
+        if (is_null($shouldSync) || $shouldSync === 'false') {
+            return (float)$configRepo->get('FreeShippingGoal.global.grossValue', 50);
+        }
+
+        /** @var CountryRepositoryContract $countryRepo */
+        $countryRepo = pluginApp(CountryRepositoryContract::class);
+        /** @var Country $country */
+        $country = $countryRepo->getCountryById($shippingCountryId);
+
+        /** @var ParcelServicePresetRepositoryContract $parcelServicePresetRepo */
+        $parcelServicePresetRepo = pluginApp(ParcelServicePresetRepositoryContract::class);
+        /** @var ParcelServicePreset $profile */
+        $profile = $parcelServicePresetRepo->getPresetById($shippingProfileId);
+        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.ParcelServicePreset', [
+            'basket_shippingCountryId' => $shippingCountryId,
+            'basket_shippingProfileId' => $shippingProfileId,
+            'profile' => $profile
+        ]);
+
+        if ($profile instanceof ParcelServicePreset) {
+            $regionConstraint = $profile->parcelServiceRegionConstraint->where(
+                'shippingRegionId',
+                $country->shippingDestinationId
+            )->first();
+            if (!is_null($regionConstraint)) {
+                $freeShippingValue = $regionConstraint->constraint->where(
+                    'subConstraintType',
+                    '5' // Free Shipping
+                )->first()->startValue;
+                return (float)$freeShippingValue;
+            }
+        }
+
+        return 0;
+    }
+}
