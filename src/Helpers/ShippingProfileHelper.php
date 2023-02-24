@@ -54,11 +54,13 @@ class ShippingProfileHelper
                 $country->shippingDestinationId
             )->first();
             if (!is_null($regionConstraint)) {
-                $freeShippingValue = $regionConstraint->constraint->where(
+                $constraint = $regionConstraint->constraint->where(
                     'subConstraintType',
-                    '5' // Free Shipping
-                )->first()->startValue;
-                return (float)$freeShippingValue;
+                    '5' // Free Shipping or Flatrate
+                )->first();
+                if (!$constraint->cost) {
+                    return (float)$constraint->startValue;
+                }
             }
         }
 
