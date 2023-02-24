@@ -30,7 +30,9 @@ class ShippingProfileHelper
         // Sync value with selected shipping profile
         $shouldSync = $configRepo->get('FreeShippingGoal.global.syncGrossValue', 'false');
         if (is_null($shouldSync) || $shouldSync === 'false') {
-            return (float)$configRepo->get('FreeShippingGoal.global.grossValue', 50);
+            $grossValue = (float)$configRepo->get('FreeShippingGoal.global.grossValue', 50);
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.BasketAmount', ['grossValue' => $grossValue]);
+            return $grossValue;
         }
 
         /** @var CountryRepositoryContract $countryRepo */
@@ -53,15 +55,24 @@ class ShippingProfileHelper
                 'shippingRegionId',
                 $country->shippingDestinationId
             )->first();
+            $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Constraint', ['regionConstraint' => $regionConstraint]);
             if (!is_null($regionConstraint)) {
-                $freeShippingValue = $regionConstraint->constraint->where(
+                $subConstraint = $regionConstraint->constraint->where(
                     'subConstraintType',
-                    '5' // Free Shipping
-                )->first()->startValue;
-                return (float)$freeShippingValue;
+                    '5' // Free Shipping or Flatrate
+                )->first();
+                $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.Constraint', ['subConstraint' => $subConstraint]);
+                // Somehow $subConstraint->cost cannot be casted to float, use this workaround instead
+                if (strpos(json_encode($subConstraint), '"cost":"0.00"')) {
+                    $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.BasketAmount', [
+                        'json' => json_encode($subConstraint),
+                        'startValue' => $subConstraint->startValue
+                    ]);
+                    return (float)$subConstraint->startValue;
+                }
             }
         }
-
+        $this->getLogger(__METHOD__)->debug('FreeShippingGoal::Debug.BasketAmount', [0]);
         return 0;
     }
 }
