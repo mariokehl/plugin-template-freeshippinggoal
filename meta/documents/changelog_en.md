@@ -1,5 +1,10 @@
 # Release Notes for "No shipping costs for values over"
 
+## v1.0.5 (2023-02-24)
+
+### Fixed
+- Fix retrieval of no shipping costs in table of shipping charges if option "From an item value of ..." was set
+
 ## v1.0.4 (2023-02-17)
 
 ### Added
