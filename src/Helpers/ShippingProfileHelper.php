@@ -58,7 +58,7 @@ class ShippingProfileHelper
                     'subConstraintType',
                     '5' // Free Shipping or Flatrate
                 )->first();
-                if (!$constraint->cost) {
+                if (intval($constraint->cost) === 0) {
                     return (float)$constraint->startValue;
                 }
             }
