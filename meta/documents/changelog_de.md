@@ -1,5 +1,10 @@
 # Versionshinweise für "Versandkostenfrei ab Warenwert erreichen"
 
+## v1.0.5 (24.02.2023)
+
+### Behoben
+- Behebt ein Problem bei dem keine Versandkostenfreigrenze in der Versandkostentabelle abgerufen werden konnten, wenn die Option "Ab Warenwert pauschale Versandkosten von" gesetzt ist
+
 ## v1.0.4 (17.02.2023)
 
 ### Hinzugefügt
