@@ -1,5 +1,10 @@
 # Versionshinweise für "Versandkostenfrei ab Warenwert erreichen"
 
+## v1.0.6 (02.03.2023)
+
+### Behoben
+- Eine fehlerhafte Abfrage auf ausgenommenene Lieferländer führte dazu, dass die Fortschrittsanzeige nicht mehr ausgeblendet wurde
+
 ## v1.0.5 (24.02.2023)
 
 ### Behoben

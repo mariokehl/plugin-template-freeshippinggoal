@@ -1,5 +1,10 @@
 # Release Notes for "No shipping costs for values over"
 
+## v1.0.6 (2023-03-02)
+
+### Fixed
+- An incorrect query for excluded delivery countries meant that the progress bar was no longer hidden
+
 ## v1.0.5 (2023-02-24)
 
 ### Fixed
