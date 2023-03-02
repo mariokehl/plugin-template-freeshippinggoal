@@ -51,7 +51,9 @@ function FreeShippingGoal(itemSum) {
             if (!self.getGrossValue()) {
                 container.style.display = 'none';
             } else {
-                container.style.display = 'block';
+                if (!container.classList.contains('d-shipping-country-none')) {
+                    container.style.display = 'block';
+                }
             }
 
             let output = '';
@@ -111,7 +113,10 @@ function FreeShippingGoal(itemSum) {
             display = 'block';
         }
         Array.prototype.forEach.call(document.querySelectorAll('.free-shipping-container'), function (el) {
+            el.classList.remove('d-shipping-country-none');
+            el.classList.remove('d-shipping-country-block');
             el.style.display = display;
+            el.classList.add('d-shipping-country-' + display);
         });
     }
 }
@@ -146,7 +151,7 @@ document.addEventListener('afterBasketChanged', (e) => {
 
 // After changing the shipping country in the checkout
 document.addEventListener('afterShippingCountryChanged', (e) => {
-    const shippingCountryId = e.detail;
+    const shippingCountryId = parseInt(e.detail);
     const goodie = new FreeShippingGoal(null);
     goodie.toggle(shippingCountryId);
 });
