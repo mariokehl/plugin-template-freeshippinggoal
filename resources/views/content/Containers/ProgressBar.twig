@@ -1,7 +1,7 @@
 {% set classMissingAmount = config("FreeShippingGoal.individualization.classMissingAmount") %}
 {% set classReachedAmount = config("FreeShippingGoal.individualization.classReachedAmount") %}
 
-<div class="free-shipping-container mb-4"{% if hidden %} style="display: none;"{% endif %}>
+<div class="free-shipping-container mb-4 {{ additionalClasses }}"{% if hidden %} style="display: none;"{% endif %}>
     <div class="progress mt-2 mb-1">
         <div role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" class="progress-bar{% if config("FreeShippingGoal.individualization.progressBarStriped") == "true" %} progress-bar-striped{% endif %} {% if percentage == 100 %}{{ classReachedAmount }}{% else %}{{ classMissingAmount }}{% endif %}" {% if width | length > 0 %} style="{{ width }}"{% endif %}></div>
     </div>

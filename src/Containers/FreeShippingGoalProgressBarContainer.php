@@ -107,6 +107,7 @@ class FreeShippingGoalProgressBarContainer
         return $twig->render('FreeShippingGoal::content.Containers.ProgressBar', [
             'excludedShippingCountries' => $excludedShippingCountries,
             'hidden' => in_array($basket->shippingCountryId, $excludedShippingCountries) || !$minimumGrossValue,
+            'additionalClasses' => in_array($basket->shippingCountryId, $excludedShippingCountries) ? 'd-shipping-country-none' : 'd-shipping-country-block',
             'grossValue' => $minimumGrossValue,
             'itemSum' => $basket->itemSum ?? 0,
             'label' => $label,
