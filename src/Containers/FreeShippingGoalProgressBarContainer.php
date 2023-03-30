@@ -109,7 +109,7 @@ class FreeShippingGoalProgressBarContainer
             'hidden' => in_array($basket->shippingCountryId, $excludedShippingCountries) || !$minimumGrossValue,
             'additionalClasses' => in_array($basket->shippingCountryId, $excludedShippingCountries) ? 'd-shipping-country-none' : 'd-shipping-country-block',
             'grossValue' => $minimumGrossValue,
-            'itemSum' => $basket->itemSum ?? 0,
+            'itemSum' => $actualItemSum ?? 0,
             'label' => $label,
             'percentage' => $percentage,
             'width' => 'width: ' . number_format($percentage, 0, '', '') . '%',
