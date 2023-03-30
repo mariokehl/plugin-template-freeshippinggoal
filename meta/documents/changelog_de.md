@@ -1,5 +1,10 @@
 # Versionshinweise für "Versandkostenfrei ab Warenwert erreichen"
 
+## v1.0.7 (30.03.2023)
+
+### Behoben
+- Behebt ein Problem, wo der Initialwert des Warenkorbes nicht richtig gesetzt wurde, insofern ein Gutschein aktiv ist
+
 ## v1.0.6 (02.03.2023)
 
 ### Behoben

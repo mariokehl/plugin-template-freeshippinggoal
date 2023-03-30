@@ -1,5 +1,10 @@
 # Release Notes for "No shipping costs for values over"
 
+## v1.0.7 (2023-03-30)
+
+### Fixed
+- Fixes a problem where the initial value of the shopping cart was not set correctly if a coupon was active
+
 ## v1.0.6 (2023-03-02)
 
 ### Fixed
