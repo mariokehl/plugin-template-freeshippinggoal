@@ -21,6 +21,15 @@ class SubscriptionInfoHelper
      */
     public function isPaid(): bool
     {
+        return true;
+    }
+
+    /**
+     * @return boolean
+     * @deprecated
+     */
+    public function isPaidDeprecated(): bool
+    {
         /** @var SubscriptionInformationServiceContract $subscriptionInfoService */
         $subscriptionInfoService = pluginApp(SubscriptionInformationServiceContract::class);
 
